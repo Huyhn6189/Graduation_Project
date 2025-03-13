@@ -1,0 +1,90 @@
+1
+
+cd Desktop
+
+cd ws
+
+source devel/setup.bash
+
+(kiểm tra robot_bringup.launch)
+
+roslaunch robot_bringup robot_bringup.launch
+
+neu loi
+
+1s/dev/tty (kiem tra chan)
+
+check lai ket noi
+
+sudo chmod 777 /dev/tty*
+
+thay code o thu vuc truoc
+
+vao chon odom, add laserscan
+
+2
+
+cd Desktop
+
+cd ws
+
+source devel/setup.bash
+
+rviz
+
+3 lenh kiem tra encorder cua chan
+
+cd Desktop
+
+cd ws
+
+source devel/setup.bash
+
+rostopic echo/pose_encod 
+
+4 dieu khien
+
+cd Desktop
+
+cd ws
+
+source devel/setup.bash
+
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+
+5
+
+cd Desktop
+
+cd ws
+
+source devel/setup.bash
+
+#roslaunch robot_navigation robot_nav.launch
+
+6 check vi tri
+
+cd Desktop
+
+cd ws
+
+source devel/setup.bash
+
+rosrun rqt_reconfigure rqt_reconfigure
+
+->move base
+
+
+-------------------------------
+khoi dong ros
+roslaunch robot_bringup robot_bringup.launch 
+tao map
+roslaunch robot_slam robot_gmapping.launch
+luu map
+rosrun map_server map_saver -f map_v5 ( thay so khac 5)
+thay robot-ros nav.launch
+dieu khien navi
+roslaunch robot_navigation robot_nav.launch
+
+->global_constmap chinh mau dong inflation_radius 0.5 hoa 0.3 0.2
+	rosrun plotjuggler plotjuggler

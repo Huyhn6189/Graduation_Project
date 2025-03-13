@@ -1,0 +1,47 @@
+1. Chay bringup
+
+cd ~/Desktop/ws
+source devel/setup.bash
+roslaunch robot_bringup robot_bringup.launch
+
+2. Chay navigation
+
+cd ~/Desktop/ws
+source devel/setup.bash
+roslaunch robot_navigation robot_nav.launch
+
+3. Kiem tra xung encoder
+
+*Chay bringup
+cd ~/Desktop/ws
+source devel/setup.bash
+rostopic echo/pose_encod 
+
+4. Chay ban phim teleop
+
+*Chay bringup
+cd ~/Desktop/ws
+source devel/setup.bash
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+
+5. Kiem tra thong so
+
+*Chay bringup
+*Chay navigation
+cd ~/Desktop/ws
+source devel/setup.bash
+rosrun rqt_reconfigure rqt_reconfigure
+
+6. Kiem tra P I D
+
+roscore
+*Chay bringup
+*Chay ban phim
+rosrun plotjuggler plotjuggler
+
+7. Tao map
+
+*Chay ban phim teleop
+source devel/setup.bash
+roslaunch hector_slam_launch savemap.launch
+rosrun map_server map_saver -f map_vx (x la so bat ki)

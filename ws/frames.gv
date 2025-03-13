@@ -1,0 +1,10 @@
+digraph G {
+"base_link" -> "lidar_link"[label="Broadcaster: /tf_laser\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1735006682.315 sec old)\nBuffer length: 0.000 sec\n"];
+"base_footprint" -> "base_link"[label="Broadcaster: /tf_base\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1735006682.315 sec old)\nBuffer length: 0.000 sec\n"];
+"odom" -> "base_footprint"[label="Broadcaster: /robot_firmware\nAverage rate: 10.205 Hz\nMost recent transform: 1735006682.302 ( 0.013 sec old)\nBuffer length: 4.900 sec\n"];
+"map" -> "odom"[label="Broadcaster: /amcl\nAverage rate: 5.158 Hz\nMost recent transform: 1735006682.319 ( -0.003 sec old)\nBuffer length: 5.428 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1735006682.315"[ shape=plaintext ] ;
+ }->"map";
+}

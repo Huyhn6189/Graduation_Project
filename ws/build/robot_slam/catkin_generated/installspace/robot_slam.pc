@@ -1,0 +1,8 @@
+prefix=/home/amr/Desktop/ws/install
+
+Name: robot_slam
+Description: Description of robot_slam
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

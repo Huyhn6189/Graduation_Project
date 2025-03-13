@@ -1,0 +1,36 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="cmd_vel_topic" default="cmd_vel" />
+  <arg name="odom_topic" default="odom" />
+  <arg name="move_forward_only" default="false"/>
+
+  <!-- move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="log">
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /> 
+    <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />-->
+    
+    <!--
+    <remap from="/map" to="/hdl_global_localization/bbs/gridmap"/>-->
+    <!--remap from="/odom" to="/odometry/filtered"/-->	
+    <!--<param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+    <param name="allow_unknown" value="true"/>
+    <param name="use_djikstra" value="true"/>
+    <param name="use_quadratic" value="true"/>
+    <param name="use_grid_path" value="false"/>
+    <param name="old_navfn_behavior" value="false"/>-->
+    <param name="cost_factor" value="0.55"/>
+    <param name="neutral_cost" value="66"/>
+    <param name="lethal_cost" value="253"/>
+    <param name="pdist_scale" value="3.0"/>
+    <rosparam file="$(find robot_navigation)/param/sim_costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_navigation)/param/sim_costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_navigation)/param/sim_local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robot_navigation)/param/sim_global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robot_navigation)/param/sim_move_base_params.yaml" command="load" />
+    <rosparam file="$(find robot_navigation)/param/sim_dwa_local_planner_params.yaml" command="load" />
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+    <remap from="odom" to="$(arg odom_topic)"/>
+    <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
+    <!--param name="DWAPlannerROS/max_rotational_vel" value="0.4" /-->
+  </node>
+</launch>

@@ -1,0 +1,15 @@
+<launch>
+  <arg name="multi_robot_name" default=""/>
+
+  <include file="$(find robot_bringup)/include/description.launch.xml">
+  </include>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="log">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" value="$(arg multi_robot_name)"/>
+  </node>
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="log">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" value="$(arg multi_robot_name)"/>
+  </node>
+</launch>
